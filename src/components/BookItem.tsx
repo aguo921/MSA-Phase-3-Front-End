@@ -10,6 +10,9 @@ import Typography from "@mui/material/Typography";
 // import components
 import Ratings from "./Ratings";
 
+// import styles
+import styles from "./book_item.module.css";
+
 // import fonts
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -47,7 +50,7 @@ function BookItem(props: Book) {
                         <picture>
                             <img
                                 src={props.volumeInfo.imageLinks.thumbnail.replace("http:", "")}
-                                className="book-image"
+                                className={styles.bookimage}
                                 alt={
                                     props.volumeInfo.authors ? (
                                         `${props.volumeInfo.title} by ${props.volumeInfo.authors.join(", ")}`
