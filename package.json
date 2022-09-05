@@ -29,7 +29,8 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "next lint"
+    "lint": "next lint",
+    "chromatic": "npx chromatic --project-token=1a638bd502f0"
   },
   "eslintConfig": {
     "extends": [
@@ -67,5 +68,7 @@
     "babel-loader": "^8.2.5",
     "chromatic": "^6.9.0",
     "eslint-config-next": "^12.2.5"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "submission@0.1.0"
 }
