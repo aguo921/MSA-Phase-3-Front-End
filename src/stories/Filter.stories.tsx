@@ -15,10 +15,10 @@ export default {
   },
   parameters: {
     backgrounds: {
-      default: 'twitter',
+      default: 'blue',
       values: [
-        { name: 'twitter', value: '#00aced' },
-        { name: 'facebook', value: '#3b5998' },
+        { name: 'blue', value: '#1976d2' },
+        { name: 'white', value: '#ffffff' },
       ],
     }
   }

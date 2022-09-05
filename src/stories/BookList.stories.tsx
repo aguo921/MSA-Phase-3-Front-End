@@ -9,6 +9,14 @@ import { BookListType } from '../interfaces';
 export default {
   title: 'BookList',
   component: BookList,
+  parameters: {
+    backgrounds: {
+        default: 'default',
+        values: [
+            {name: 'default', value: 'rgb(240, 240, 255)'}
+        ]
+    }
+  }
 } as ComponentMeta<typeof BookList>;
 
 const Template: ComponentStory<typeof BookList> = (args: BookListType) => <BookList {...args} />;

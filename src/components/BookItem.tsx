@@ -33,7 +33,7 @@ function BookItem(props: Book) {
 
                 {props.volumeInfo.authors ? (
                     <Typography variant="h6">
-                        Author: {props.volumeInfo.authors.toString()}
+                        Author: {props.volumeInfo.authors.join(", ")}
                     </Typography>
                 ) : null}
 
@@ -50,7 +50,7 @@ function BookItem(props: Book) {
                                 className="book-image"
                                 alt={
                                     props.volumeInfo.authors ? (
-                                        `${props.volumeInfo.title} by ${props.volumeInfo.authors.toString()}`
+                                        `${props.volumeInfo.title} by ${props.volumeInfo.authors.join(", ")}`
                                     ) : (
                                         props.volumeInfo.title
                                     )
