@@ -46,7 +46,7 @@ function BookItem(props: Book) {
                     props.volumeInfo.imageLinks.thumbnail ? (
                         <picture>
                             <img
-                                src={props.volumeInfo.imageLinks.thumbnail}
+                                src={props.volumeInfo.imageLinks.thumbnail.replace("http:", "")}
                                 className="book-image"
                                 alt={
                                     props.volumeInfo.authors ? (
