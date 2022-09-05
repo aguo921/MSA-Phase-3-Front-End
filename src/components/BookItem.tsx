@@ -17,7 +17,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 // import interfaces
-import { Book } from '../interfaces'
+import { Book } from '../interfaces';
 
 function BookItem(props: Book) {
     return (
@@ -44,17 +44,19 @@ function BookItem(props: Book) {
                 <Divider />
                 {props.volumeInfo.imageLinks ? (
                     props.volumeInfo.imageLinks.thumbnail ? (
-                        <img
-                            src={props.volumeInfo.imageLinks.thumbnail}
-                            className="book-image"
-                            alt={
-                                props.volumeInfo.authors ? (
-                                    `${props.volumeInfo.title} by ${props.volumeInfo.authors.toString()}`
-                                ) : (
-                                    props.volumeInfo.title
-                                )
-                            }
-                        />
+                        <picture>
+                            <img
+                                src={props.volumeInfo.imageLinks.thumbnail}
+                                className="book-image"
+                                alt={
+                                    props.volumeInfo.authors ? (
+                                        `${props.volumeInfo.title} by ${props.volumeInfo.authors.toString()}`
+                                    ) : (
+                                        props.volumeInfo.title
+                                    )
+                                }
+                            />
+                        </picture>
                     ) : null
                 ) : null}
 

@@ -11,7 +11,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 // import interfaces
-import { BookListType } from '../interfaces';
+import { Book, BookListType } from '../interfaces';
 
 function BookList(props: BookListType) {
     return (
@@ -19,8 +19,10 @@ function BookList(props: BookListType) {
         spacing={5}
         sx={{py: 5}}
     >
-        {props.books.map((book: any) => (
-            <BookItem {...book} />
+        {props.books.map((book: Book) => (
+            <div key={book.id}>
+                <BookItem {...book} />
+            </div>
         ))}
     </Stack>
     )

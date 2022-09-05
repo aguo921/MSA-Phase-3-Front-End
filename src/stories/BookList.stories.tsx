@@ -5,7 +5,6 @@ import BookList from '../components/BookList';
 import { BookOne, BookTwo, BookThree } from './BookItem.stories';
 
 import { BookListType } from '../interfaces';
-import { isArgumentsObject } from 'util/types';
 
 export default {
   title: 'BookList',

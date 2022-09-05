@@ -11,7 +11,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Ratings>;;
+} as ComponentMeta<typeof Ratings>;
 
 const Template: ComponentStory<typeof Ratings> = (args: RatingsProps) => <Ratings {...args} />;
 
