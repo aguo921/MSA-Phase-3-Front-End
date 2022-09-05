@@ -2,6 +2,9 @@
 import axios from "axios";
 import {useState} from "react";
 
+// import next components
+import Link from "next/link";
+
 // import material UI components
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -19,7 +22,12 @@ import SearchButton from "../components/SearchButton";
 // import interfaces
 import { SearchResults, SearchBy } from '../interfaces';
 
+// Agenda
 // TODO: Fix changing size of filter + search bar
+// TODO: Separate home and search results pages
+// TODO: Details page for each book
+// TODO: Header component
+// TODO: Add links
 
 export default function Home() {
   const [searchName, setSearchName] = useState<string>("");
@@ -41,7 +49,7 @@ export default function Home() {
               component="div"
               sx={{flexGrow: 1}}
             >
-              Library
+              <Link href='/'>Library</Link>
             </Typography>
             <Filter
               searchBy={searchBy}
