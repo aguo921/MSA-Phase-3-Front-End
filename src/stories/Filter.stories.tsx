@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { screen, userEvent, waitFor } from '@storybook/testing-library';
+import { screen, userEvent } from '@storybook/testing-library';
 
 import Filter from '../components/Filter';
 

@@ -1,5 +1,7 @@
+// import material UI components
 import TextField from "@mui/material/TextField";
 
+// import interfaces
 import { SearchBarProps } from '../interfaces';
 
 function SearchBar(props: SearchBarProps) {

@@ -1,7 +1,9 @@
+// import material UI components
 import Tooltip from "@mui/material/Tooltip";
 import Rating from "@mui/material/Rating"
 import Box from "@mui/material/Box";
 
+// import interfaces
 import { RatingsProps } from "../interfaces";
 
 function Ratings(props: RatingsProps) {

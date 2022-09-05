@@ -1,8 +1,10 @@
+// import material UI components
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select, {SelectChangeEvent} from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
+// import interfaces
 import { FilterProps, SearchBy } from "../interfaces";
 
 function Filter(props: FilterProps) {

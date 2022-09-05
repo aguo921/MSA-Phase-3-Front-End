@@ -10,9 +10,6 @@ import Typography from "@mui/material/Typography";
 // import components
 import Ratings from "./Ratings";
 
-// import react
-import { useState, SyntheticEvent } from 'react';
-
 // import styles
 import styles from "./book_item.module.css";
 
@@ -66,6 +63,7 @@ function BookItem(props: Book) {
                     ) : null
                 ) : null}
 
+
                 <Accordion
                     elevation={0}
                     disableGutters
@@ -83,7 +81,7 @@ function BookItem(props: Book) {
 
                     <AccordionDetails>
                         <Typography sx={{ textAlign: "justify" }}>
-                            {props.volumeInfo.description}
+                            {props.volumeInfo.description ? props.volumeInfo.description : `No description available.`}
                         </Typography>
                     </AccordionDetails>
                 </Accordion>

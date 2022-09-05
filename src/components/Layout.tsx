@@ -20,7 +20,9 @@ export default function Layout({
         />
         <title>Library</title>
       </Head>
-      <main>{children}</main>
+      <main>
+        {children}
+      </main>
     </div>
   )
 }

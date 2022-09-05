@@ -1,6 +1,8 @@
+// import material UI components
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
+// import interfaces
 import { SearchButtonProps } from '../interfaces';
 
 function SearchButton(props: SearchButtonProps) {
@@ -13,9 +15,7 @@ function SearchButton(props: SearchButtonProps) {
                 }}
                 sx={{mr: 2}}
             >
-                <SearchIcon
-                    style={{fill: "white"}}
-                />
+                <SearchIcon style={{fill: "white"}} />
             </IconButton>
         </div>
     )

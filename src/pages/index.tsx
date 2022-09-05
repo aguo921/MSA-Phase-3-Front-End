@@ -16,7 +16,7 @@ import Filter from "../components/Filter";
 import SearchBar from "../components/SearchBar";
 import SearchButton from "../components/SearchButton";
 
-// import interaces
+// import interfaces
 import { SearchResults, SearchBy } from '../interfaces';
 
 export default function Home() {
@@ -57,7 +57,12 @@ export default function Home() {
       </Box>
       <Container maxWidth="sm">
         {searchInfo ? (
-          <BookList books={searchInfo.items} />
+          <>
+            <Typography sx={{mt: 5, textAlign: "center"}}>
+              {`Displaying ${searchInfo.items.length} out of ${searchInfo.totalItems} search results.`}
+            </Typography>
+            <BookList books={searchInfo.items} />
+          </>
         ) : (
           <Typography sx={{mt: 5, textAlign: "center"}}>
             Book not found
@@ -68,10 +73,8 @@ export default function Home() {
   )
 
   function search() {
-    let query = searchName.split(" ").join("+");
-    if (searchBy !== "any") {
-      query = searchBy + ":" + query;
-    }
+    let query = searchName.replace(" ", "+");
+    query = searchBy === "any" ? query : searchBy + ":" + query;
     axios
     .get(GOOGLE_BOOKS_BASE_URL + "/volumes?q=" + query)
     .then((res) => {
