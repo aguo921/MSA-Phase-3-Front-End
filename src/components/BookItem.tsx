@@ -69,7 +69,7 @@ function BookItem(props: Book) {
                         aria-controls={`panel${props.id}-content`}
                         id={`panel${props.id}-header`}
                     >
-                        <Typography>
+                        <Typography sx={{ fontWeight: "bold" }}>
                             Description
                         </Typography>
                     </AccordionSummary>

@@ -3,6 +3,8 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import BookItem from '../components/BookItem';
 
+import { screen, userEvent } from '@storybook/testing-library';
+
 import { Book } from '../interfaces';
 
 export default {
@@ -62,3 +64,7 @@ BookThree.args = {
         }
     }
 }
+
+BookThree.play = async () => {
+    await userEvent.click(screen.getByRole('button'));
+};

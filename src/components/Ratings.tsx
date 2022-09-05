@@ -1,8 +1,8 @@
 import Tooltip from "@mui/material/Tooltip";
 import Rating from "@mui/material/Rating"
+import Box from "@mui/material/Box";
 
 import { RatingsProps } from "../interfaces";
-
 
 function Ratings(props: RatingsProps) {
     return (
@@ -18,8 +18,9 @@ function Ratings(props: RatingsProps) {
             }
             placement="right"
             describeChild
+            arrow
         >
-            <span>
+            <Box sx={{display: 'inline-block'}}>
                 <Rating
                     name="rating"
                     precision={0.1}
@@ -27,8 +28,9 @@ function Ratings(props: RatingsProps) {
                         props.averageRating ? props.averageRating : null
                     }
                     readOnly
+                    sx={{ py: 2 }}
                 />
-            </span>
+            </Box>
         </Tooltip>
     )
 }
