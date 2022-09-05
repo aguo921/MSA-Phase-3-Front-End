@@ -9,9 +9,6 @@ import { BookListType } from '../interfaces';
 export default {
   title: 'BookList',
   component: BookList,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof BookList>;
 
 const Template: ComponentStory<typeof BookList> = (args: BookListType) => <BookList {...args} />;

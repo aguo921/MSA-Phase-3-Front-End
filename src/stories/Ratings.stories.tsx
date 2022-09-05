@@ -3,14 +3,13 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Ratings from '../components/Ratings';
 
+import { userEvent, waitFor, within } from '@storybook/testing-library';
+
 import { RatingsProps } from '../interfaces';
 
 export default {
   title: 'Ratings',
   component: Ratings,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof Ratings>;
 
 const Template: ComponentStory<typeof Ratings> = (args: RatingsProps) => <Ratings {...args} />;
@@ -27,4 +26,16 @@ RatingTwo.args = {
     averageRating: 2.5
 }
 
-export const RatingThree = Template.bind({});
+export const HoverRating = Template.bind({});
+HoverRating.args = {
+  ratingsCount: 14,
+  averageRating: 4
+}
+
+HoverRating.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  await waitFor(async () => {
+    await userEvent.hover(canvas.getByTitle('14 ratings'))
+  })
+};

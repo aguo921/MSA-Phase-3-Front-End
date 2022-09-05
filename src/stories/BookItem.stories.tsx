@@ -8,9 +8,6 @@ import { Book } from '../interfaces';
 export default {
   title: 'BookItem',
   component: BookItem,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof BookItem>;
 
 const Template: ComponentStory<typeof BookItem> = (args: Book | undefined) => <BookItem {...args} />;

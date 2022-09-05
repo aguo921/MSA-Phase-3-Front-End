@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { screen, userEvent } from '@storybook/testing-library';
+import { screen, userEvent, waitFor } from '@storybook/testing-library';
 
 import Filter from '../components/Filter';
 
@@ -11,9 +11,17 @@ export default {
   title: 'Filter',
   component: Filter,
   argTypes: {
-    backgroundColor: { control: 'color' },
-    onClick: {action: 'clicked'}
+    setSearchBy: { action: 'setSearchBy' }
   },
+  parameters: {
+    backgrounds: {
+      default: 'twitter',
+      values: [
+        { name: 'twitter', value: '#00aced' },
+        { name: 'facebook', value: '#3b5998' },
+      ],
+    }
+  }
 } as ComponentMeta<typeof Filter>;
 
 const Template: ComponentStory<typeof Filter> = (args: FilterProps) => <Filter {...args} />;
@@ -33,26 +41,20 @@ Title.args = {
     searchBy: "intitle"
 }
 
-function sleep(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
-export const SelectOptions = Template.bind({});
-SelectOptions.play = async () => {
-    await sleep(1000);
-
+export const SelectAny = Template.bind({});
+SelectAny.play = async () => {
     await userEvent.click(screen.getByRole('button'));
-    await sleep(1000);
+    await userEvent.click(screen.getByText(/Any/));
+};
 
-    await userEvent.click(screen.getByText('Author'));
-    await sleep(1000);
+export const SelectAuthor = Template.bind({});
+SelectAuthor.play = async () => {
+    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByText(/Author/));
+};
 
-    await userEvent.click(screen.getByText('Title'));
-    await sleep(1000);
-
-    await userEvent.click(screen.getByText('Any'));
-    await sleep(1000);
-
-    await userEvent.click(screen.getByRole('presentation'));
-
+export const SelectTitle = Template.bind({});
+SelectTitle.play = async () => {
+    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByText(/Title/));
 };
