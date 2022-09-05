@@ -10,6 +10,9 @@ import { Book } from '../interfaces';
 export default {
   title: 'BookItem',
   component: BookItem,
+  argTypes: {
+    handleChange: { action: 'expanded' }
+  }
 } as ComponentMeta<typeof BookItem>;
 
 const Template: ComponentStory<typeof BookItem> = (args: Book | undefined) => <BookItem {...args} />;

@@ -10,6 +10,9 @@ import Typography from "@mui/material/Typography";
 // import components
 import Ratings from "./Ratings";
 
+// import react
+import { useState, SyntheticEvent } from 'react';
+
 // import styles
 import styles from "./book_item.module.css";
 
@@ -63,7 +66,11 @@ function BookItem(props: Book) {
                     ) : null
                 ) : null}
 
-                <Accordion elevation={0}>
+                <Accordion
+                    elevation={0}
+                    disableGutters
+                    sx={{borderTop: 1, borderColor: 'grey.500'}}
+                >
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls={`panel${props.id}-content`}
