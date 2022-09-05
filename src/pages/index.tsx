@@ -56,12 +56,12 @@ export default function Home() {
         </AppBar>
       </Box>
       <Container maxWidth="sm">
-        {searchInfo === undefined ? (
+        {searchInfo ? (
+          <BookList books={searchInfo.items} />
+        ) : (
           <Typography sx={{mt: 5, textAlign: "center"}}>
             Book not found
           </Typography>
-        ) : (
-          <BookList books={searchInfo.items} />
         )}
       </Container>
     </Layout>
