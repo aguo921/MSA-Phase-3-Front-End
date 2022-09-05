@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { screen, userEvent, waitFor } from '@storybook/testing-library';
+import { screen, userEvent } from '@storybook/testing-library';
 
 import SearchButton from '../components/SearchButton';
 
@@ -26,18 +26,12 @@ export default {
 
 const Template: ComponentStory<typeof SearchButton> = (args: SearchButtonProps) => <SearchButton {...args} />;
 
+export const Default = Template.bind({});
+
 export const Click = Template.bind({});
 
 Click.play = async () => {
     await userEvent.click(screen.getByRole('button'));
-};
-
-export const Hover = Template.bind({});
-
-Hover.play = async () => {
-    await waitFor(async () => {
-        await userEvent.hover(screen.getByRole('button'));
-      });
 };
 
 export const Focus = Template.bind({});

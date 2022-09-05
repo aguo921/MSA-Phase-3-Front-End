@@ -67,7 +67,8 @@
     "@storybook/testing-library": "^0.0.13",
     "babel-loader": "^8.2.5",
     "chromatic": "^6.9.0",
-    "eslint-config-next": "^12.2.5"
+    "eslint-config-next": "^12.2.5",
+    "storybook-addon-pseudo-states": "^1.15.1"
   },
   "readme": "ERROR: No README data found!",
   "_id": "submission@0.1.0"
