@@ -13,10 +13,11 @@ export default {
   },
 } as ComponentMeta<typeof BookItem>;
 
-const Template: ComponentStory<typeof BookItem> = (args: Book) => <BookItem {...args} />;
+const Template: ComponentStory<typeof BookItem> = (args: Book | undefined) => <BookItem {...args} />;
 
 export const BookOne = Template.bind({});
 BookOne.args = {
+    id: "1",
     volumeInfo: {
         title: "Flowers",
         authors: [
@@ -33,6 +34,7 @@ BookOne.args = {
 
 export const BookTwo = Template.bind({});
 BookTwo.args = {
+    id: "2",
     volumeInfo: {
         title: "Idiots",
         authors: [
@@ -49,6 +51,7 @@ BookTwo.args = {
 
 export const BookThree = Template.bind({});
 BookThree.args = {
+    id: "3",
     volumeInfo: {
         title: "Trees",
         authors: [

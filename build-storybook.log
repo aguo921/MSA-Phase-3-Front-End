@@ -1,0 +1,18 @@
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+info @storybook/react v6.5.10
+info 
+info => Cleaning outputDir: C:\\Users\\ANGELA~1\\AppData\\Local\\Temp\\chromatic--10784-v3VKxlEtJw0h
+ERR! NestedError: Cannot copy `C:\Users\Angela (school)\front-end-submission\node_modules\@storybook\core-server\public\favicon.ico`: the file doesn't exist
+ERR!     at C:\Users\Angela (school)\front-end-submission\node_modules\cpy\index.js:96:10
+ERR!     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+ERR!     at async buildStaticStandalone (C:\Users\Angela (school)\front-end-submission\node_modules\@storybook\core-server\dist\cjs\build-static.js:104:3)
+ERR!     at async buildStatic (C:\Users\Angela (school)\front-end-submission\node_modules\@storybook\core-server\dist\cjs\build-static.js:254:5)
+ERR!  NestedError: Cannot copy `C:\Users\Angela (school)\front-end-submission\node_modules\@storybook\core-server\public\favicon.ico`: the file doesn't exist
+ERR!     at C:\Users\Angela (school)\front-end-submission\node_modules\cpy\index.js:96:10
+ERR!     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+ERR!     at async buildStaticStandalone (C:\Users\Angela (school)\front-end-submission\node_modules\@storybook\core-server\dist\cjs\build-static.js:104:3)
+ERR!     at async buildStatic (C:\Users\Angela (school)\front-end-submission\node_modules\@storybook\core-server\dist\cjs\build-static.js:254:5) {
+ERR!   nested: undefined,
+ERR!   name: 'CpyError'
+ERR! }
+info => Loading presets

@@ -21,59 +21,62 @@ import { Book } from '../interfaces'
 
 function BookItem(props: Book) {
     return (
-        <Paper
-            key={props.id}
-            elevation={2}
-            sx={{p: 5}}
-        >
-            <Typography variant="h5" sx={{fontWeight: "bold"}}>
-                {props.volumeInfo.title}
-            </Typography>
+        (props.volumeInfo && props.id && props.volumeInfo.title) ? (
+            <Paper
+                key={props.id}
+                elevation={2}
+                sx={{ p: 5 }}
+            >
+                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                    {props.volumeInfo.title}
+                </Typography>
 
-            {  
-                props.volumeInfo.authors ? (
+                {props.volumeInfo.authors ? (
                     <Typography variant="h6">
                         Author: {props.volumeInfo.authors.toString()}
                     </Typography>
-                ) : null
-            }
-            
-            <Ratings
-                ratingsCount={props.volumeInfo.ratingsCount}
-                averageRating={props.volumeInfo.averageRating}
-            />
+                ) : null}
 
-            <Divider />
-            {
-                props.volumeInfo.imageLinks ? (
+                <Ratings
+                    ratingsCount={props.volumeInfo.ratingsCount}
+                    averageRating={props.volumeInfo.averageRating} />
+
+                <Divider />
+                {props.volumeInfo.imageLinks ? (
                     props.volumeInfo.imageLinks.thumbnail ? (
-                        <img 
+                        <img
                             src={props.volumeInfo.imageLinks.thumbnail}
                             className="book-image"
-                            alt={`${props.volumeInfo.title} by ${props.volumeInfo.authors.toString()}`}
+                            alt={
+                                props.volumeInfo.authors ? (
+                                    `${props.volumeInfo.title} by ${props.volumeInfo.authors.toString()}`
+                                ) : (
+                                    props.volumeInfo.title
+                                )
+                            }
                         />
                     ) : null
-                ) : null
-            }
-            
-            <Accordion elevation={0}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls={`panel${props.id}-content`}
-                    id={`panel${props.id}-header`}
-                >
-                    <Typography>
-                        Description
-                    </Typography>
-                </AccordionSummary>
+                ) : null}
 
-                <AccordionDetails>
-                    <Typography sx={{textAlign: "justify"}}>
-                        {props.volumeInfo.description}
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-        </Paper>
+                <Accordion elevation={0}>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls={`panel${props.id}-content`}
+                        id={`panel${props.id}-header`}
+                    >
+                        <Typography>
+                            Description
+                        </Typography>
+                    </AccordionSummary>
+
+                    <AccordionDetails>
+                        <Typography sx={{ textAlign: "justify" }}>
+                            {props.volumeInfo.description}
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+            </Paper>
+        ) : null
     )
 }
             

@@ -24,17 +24,22 @@ function Filter(props: FilterProps) {
             <Select
                 labelId="filter-label"
                 value={props.searchBy}
-                onChange={(event: SelectChangeEvent) => {
-                    props.setSearchBy(event.target.value as SearchBy);
-                }}
+                onChange={
+                    (event: SelectChangeEvent<typeof props.searchBy>) => {
+                        const {
+                            target: { value },
+                        } = event;
+                        props.setSearchBy(value as SearchBy)
+                    }
+                }
             >
-                <MenuItem value={"any"} label="select-any">
+                <MenuItem value={"any"} key={"any"}>
                     Any
                 </MenuItem>
-                <MenuItem value={"intitle"} label="select-title">
+                <MenuItem value={"intitle"} key={"intitle"}>
                     Title
                 </MenuItem>
-                <MenuItem value={"inauthor"} label="select-author">
+                <MenuItem value={"inauthor"} key={"inauthor"}>
                     Author
                 </MenuItem>
             </Select>

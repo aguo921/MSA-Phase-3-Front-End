@@ -1,14 +1,14 @@
 export type Book = {
     kind?: string,
-    id: string,
+    id?: string,
     etag?: string,
     selfLink?: string,
-    volumeInfo: {
-        title: string,
-        authors: string[],
+    volumeInfo?: {
+        title?: string,
+        authors?: string[],
         publisher?: string,
         publisherDate?: string,
-        description: string,
+        description?: string,
         industryIdentifiers?: IndustryIdentifier[],
         pageCount?: number,
         dimensions?: {
@@ -63,6 +63,10 @@ export type Book = {
         },
         accessViewStatus?: string
     }
+}
+
+export type BookListType = {
+    books: Book[]
 }
 
 export type IndustryIdentifier = {

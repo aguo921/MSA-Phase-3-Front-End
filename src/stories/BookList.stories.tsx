@@ -4,11 +4,8 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import BookList from '../components/BookList';
 import { BookOne, BookTwo, BookThree } from './BookItem.stories';
 
-import { Book } from '../interfaces';
-
-type Props = {
-    books: Book[]
-}
+import { BookListType } from '../interfaces';
+import { isArgumentsObject } from 'util/types';
 
 export default {
   title: 'BookList',
@@ -16,9 +13,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof BookList>;;
+} as ComponentMeta<typeof BookList>;
 
-const Template: ComponentStory<typeof BookList> = (args: Props) => <BookList {...args} />;
+const Template: ComponentStory<typeof BookList> = (args: BookListType) => <BookList {...args} />;
 
 export const Empty = Template.bind({});
 Empty.args = {
