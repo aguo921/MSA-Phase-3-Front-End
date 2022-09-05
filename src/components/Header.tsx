@@ -1,5 +1,6 @@
 // import libraries
 import {useState} from "react";
+import axios from "axios";
 
 // import next components
 import Link from "next/link";
@@ -24,6 +25,8 @@ import styles from './Header.module.css';
 export default function Header(props: HeaderProps) {
   const [searchName, setSearchName] = useState<string>("");
   const [searchBy, setSearchBy] = useState<SearchBy>("any");
+
+  const GOOGLE_BOOKS_BASE_URL = "https://www.googleapis.com/books/v1"
 
   return (
     <Box sx={{flexGrow: 1}}>
@@ -51,8 +54,15 @@ export default function Header(props: HeaderProps) {
                 onClick={() => {
                     let query = searchName.replace(" ", "+");
                     query = searchBy === "any" ? query : searchBy + ":" + query;
-                    props.setQuery(query);
-                    props.onSearch();
+                    axios
+                    .get(GOOGLE_BOOKS_BASE_URL + "/volumes?q=" + query)
+                    .then((res) => {
+                        props.setSearchInfo(res.data);
+                    })
+                    .catch((err) => {
+                        console.log("Book not found");
+                        props.setSearchInfo(undefined);
+                    });
                 }}
             />
             </Toolbar>

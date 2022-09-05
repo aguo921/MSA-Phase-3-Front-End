@@ -11,8 +11,7 @@ export default {
   title: 'Header',
   component: Header,
   argTypes: {
-    setQuery: { action: 'setQuery' },
-    onSearch: { action: true }
+    setSearchInfo: { action: 'setSearchInfo' },
   },
 } as ComponentMeta<typeof Header>;
 

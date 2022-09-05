@@ -78,7 +78,7 @@ export type SearchResults = {
     kind?: string,
     items: Book[],
     totalItems?: 3
-}
+} | undefined
 
 export type SearchBy = "any" | "intitle" | "inauthor"
 
@@ -102,6 +102,7 @@ export type RatingsProps = {
 }
 
 export type HeaderProps = {
-    setQuery: (a: string) => void,
-    onSearch: (a: void) => void
+    // setQuery: (a: string) => void,
+    // onSearch: (a: void) => void
+    setSearchInfo: (a: SearchResults) => void
 }
