@@ -19,6 +19,8 @@ import SearchButton from "../components/SearchButton";
 // import interfaces
 import { SearchResults, SearchBy } from '../interfaces';
 
+// TODO: Fix changing size of filter + search bar
+
 export default function Home() {
   const [searchName, setSearchName] = useState<string>("");
   const [searchInfo, setSearchInfo] = useState<SearchResults | undefined>(undefined);
