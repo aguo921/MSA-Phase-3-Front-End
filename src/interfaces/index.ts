@@ -65,7 +65,7 @@ export type Book = {
     }
 }
 
-export type BookListType = {
+export type BookListProps = {
     books: Book[]
 }
 
@@ -85,6 +85,15 @@ export type SearchBy = "any" | "intitle" | "inauthor"
 export type FilterProps = {
     searchBy: SearchBy,
     setSearchBy: (a: SearchBy) => void
+}
+
+export type SearchBarProps = {
+    value: string,
+    setValue: (a: string) => void
+}
+
+export type SearchButtonProps = {
+    search: (a: void) => void
 }
 
 export type RatingsProps = {

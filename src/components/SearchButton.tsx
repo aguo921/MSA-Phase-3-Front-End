@@ -1,11 +1,9 @@
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-type Props = {
-    search: (a: void) => void
-}
+import { SearchButtonProps } from '../interfaces';
 
-function SearchButton(props: Props) {
+function SearchButton(props: SearchButtonProps) {
     return (
         <div>
             <IconButton
