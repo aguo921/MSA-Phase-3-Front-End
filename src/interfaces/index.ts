@@ -93,10 +93,15 @@ export type SearchBarProps = {
 }
 
 export type SearchButtonProps = {
-    search: (a: void) => void
+    onClick: (a: void) => void
 }
 
 export type RatingsProps = {
     ratingsCount: number | undefined,
     averageRating: number | undefined
+}
+
+export type HeaderProps = {
+    setQuery: (a: string) => void,
+    onSearch: (a: void) => void
 }

@@ -11,7 +11,7 @@ function SearchButton(props: SearchButtonProps) {
             <IconButton
                 aria-label="search"
                 onClick={() => {
-                    props.search();
+                    props.onClick();
                 }}
                 sx={{mr: 2}}
             >

@@ -15,9 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 // import components
 import Layout from '../components/Layout';
 import BookList from "../components/BookList";
-import Filter from "../components/Filter";
-import SearchBar from "../components/SearchBar";
-import SearchButton from "../components/SearchButton";
+import Header from '../components/Header';
 
 // import interfaces
 import { SearchResults, SearchBy } from '../interfaces';
@@ -30,41 +28,17 @@ import { SearchResults, SearchBy } from '../interfaces';
 // TODO: Add links
 
 export default function Home() {
-  const [searchName, setSearchName] = useState<string>("");
   const [searchInfo, setSearchInfo] = useState<SearchResults | undefined>(undefined);
-  const [searchBy, setSearchBy] = useState<SearchBy>("any");
+  const [query, setQuery] = useState<string | undefined>(undefined);
 
   const GOOGLE_BOOKS_BASE_URL = "https://www.googleapis.com/books/v1"
 
   return (
     <Layout>
-      <Box sx={{flexGrow: 1}}>
-        <AppBar
-          position="static"
-          sx={{padding: 1}}
-        >
-          <Toolbar>
-            <Typography
-              variant="h3"
-              component="div"
-              sx={{flexGrow: 1}}
-            >
-              <Link href='/'>Library</Link>
-            </Typography>
-            <Filter
-              searchBy={searchBy}
-              setSearchBy={setSearchBy}
-            />
-            <SearchBar
-              value={searchName}
-              setValue={setSearchName}
-            />
-            <SearchButton
-              search={search}
-            />
-          </Toolbar>
-        </AppBar>
-      </Box>
+      <Header
+        setQuery={setQuery}
+        onSearch={onSearch}
+      />
       <Container maxWidth="sm">
         {searchInfo ? (
           <>
@@ -82,9 +56,7 @@ export default function Home() {
     </Layout>
   )
 
-  function search() {
-    let query = searchName.replace(" ", "+");
-    query = searchBy === "any" ? query : searchBy + ":" + query;
+  function onSearch() {
     axios
     .get(GOOGLE_BOOKS_BASE_URL + "/volumes?q=" + query)
     .then((res) => {

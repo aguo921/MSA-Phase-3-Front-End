@@ -11,7 +11,7 @@ export default {
   title: 'Search Button',
   component: SearchButton,
   argTypes: {
-    search: { action: 'click' }
+    onClick: { action: 'click' }
   },
   parameters: {
     backgrounds: {
