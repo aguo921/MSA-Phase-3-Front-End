@@ -27,6 +27,7 @@ export default function Header(props: HeaderProps) {
   const [searchBy, setSearchBy] = useState<SearchBy>("any");
 
   const GOOGLE_BOOKS_BASE_URL = "https://www.googleapis.com/books/v1"
+  const API_KEY = "AIzaSyAKbgA01Ljc6tBu_YjrhTly0hLu0OtgQh8"
 
   return (
     <Box sx={{flexGrow: 1}}>
@@ -40,7 +41,7 @@ export default function Header(props: HeaderProps) {
                 component="div"
                 sx={{flexGrow: 1}}
             >
-                <Link href='/' className={ styles.headerlink }>Library</Link>
+                <Link href='/' className={ styles.link }>Library</Link>
             </Typography>
             <Filter
                 searchBy={searchBy}
@@ -53,10 +54,11 @@ export default function Header(props: HeaderProps) {
             <SearchButton
                 onClick={() => {
                     let query = searchName.replace(" ", "+");
-                    query = searchBy === "any" ? query : searchBy + ":" + query;
+                    query = searchBy === "any" ? query : searchBy + ":" + query
                     axios
-                    .get(GOOGLE_BOOKS_BASE_URL + "/volumes?q=" + query)
+                    .get(`${GOOGLE_BOOKS_BASE_URL}/volumes?q=${query}&${API_KEY}`)
                     .then((res) => {
+                        console.log("Success!")
                         props.setSearchInfo(res.data);
                     })
                     .catch((err) => {

@@ -62,6 +62,9 @@ export type Book = {
             isAvailable?: boolean
         },
         accessViewStatus?: string
+    },
+    searchInfo?: {
+        textSnippet?: string
     }
 }
 

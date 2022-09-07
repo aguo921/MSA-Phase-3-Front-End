@@ -19,8 +19,12 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+import React from 'react';
+
 // import interfaces
 import { Book } from '../interfaces';
+
+import Link from 'next/link';
 
 function BookItem(props: Book) {
     return (
@@ -30,9 +34,12 @@ function BookItem(props: Book) {
                 elevation={2}
                 sx={{ p: 5 }}
             >
-                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                    {props.volumeInfo.title}
-                </Typography>
+                
+                    <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                    <Link href={`/books/${props.id}`}>
+                        <a>{props.volumeInfo.title}</a>
+                        </Link>
+                    </Typography>
 
                 {props.volumeInfo.authors ? (
                     <Typography variant="h6">
@@ -81,7 +88,12 @@ function BookItem(props: Book) {
 
                     <AccordionDetails>
                         <Typography sx={{ textAlign: "justify" }}>
-                            {props.volumeInfo.description ? props.volumeInfo.description : `No description available.`}
+                            {props.volumeInfo.description ? (
+                                props.volumeInfo.description
+                            ) : (
+                                `No description available.`
+                            )
+                            }
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
