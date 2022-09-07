@@ -1,5 +1,4 @@
 // import libraries
-import axios from "axios";
 import {useState} from "react";
 
 // import material UI components
@@ -23,9 +22,6 @@ import { SearchResults } from '../interfaces';
 
 export default function Home() {
   const [searchInfo, setSearchInfo] = useState<SearchResults | undefined>(undefined);
-  const [query, setQuery] = useState<string | undefined>(undefined);
-
-  const GOOGLE_BOOKS_BASE_URL = "https://www.googleapis.com/books/v1"
 
   return (
     <Layout>
