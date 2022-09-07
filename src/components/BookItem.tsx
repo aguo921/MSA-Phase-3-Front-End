@@ -27,6 +27,24 @@ import { Book } from '../interfaces';
 import Link from 'next/link';
 
 function BookItem(props: Book) {
+    function choose_image(image_links: any) {
+        return (
+            image_links.extraLarge ? (
+                image_links.extraLarge
+            ) : image_links.large ? (
+                image_links.large
+            ) : image_links.medium ? (
+                image_links.medium
+            ) : image_links.small ? (
+                image_links.small
+            ) : image_links.thumbnail ? (
+                image_links.thumbnail
+            ) : image_links.smallThumbnail ? (
+                image_links.smallThumbnail
+            ) : undefined
+        )
+    }
+
     return (
         (props.volumeInfo && props.id && props.volumeInfo.title) ? (
             <Paper
@@ -35,11 +53,11 @@ function BookItem(props: Book) {
                 sx={{ p: 5 }}
             >
                 
-                    <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                     <Link href={`/books/${props.id}`}>
-                        <a>{props.volumeInfo.title}</a>
-                        </Link>
-                    </Typography>
+                        {props.volumeInfo.title}
+                    </Link>
+                </Typography>
 
                 {props.volumeInfo.authors ? (
                     <Typography variant="h6">
@@ -49,27 +67,26 @@ function BookItem(props: Book) {
 
                 <Ratings
                     ratingsCount={props.volumeInfo.ratingsCount}
-                    averageRating={props.volumeInfo.averageRating} />
+                    averageRating={props.volumeInfo.averageRating}
+                />
 
                 <Divider />
-                {props.volumeInfo.imageLinks ? (
-                    props.volumeInfo.imageLinks.thumbnail ? (
-                        <picture>
-                            <img
-                                src={props.volumeInfo.imageLinks.thumbnail.replace("http:", "")}
-                                className={styles.bookimage}
-                                alt={
-                                    props.volumeInfo.authors ? (
-                                        `${props.volumeInfo.title} by ${props.volumeInfo.authors.join(", ")}`
-                                    ) : (
-                                        props.volumeInfo.title
-                                    )
-                                }
-                            />
-                        </picture>
-                    ) : null
-                ) : null}
 
+                {props.volumeInfo.imageLinks && choose_image(props.volumeInfo.imageLinks) ? (
+                    <picture>
+                        <img
+                            src={choose_image(props.volumeInfo.imageLinks).replace("http:", "")}
+                            className={styles.bookimage}
+                            alt={
+                                props.volumeInfo.authors ? (
+                                    `${props.volumeInfo.title} by ${props.volumeInfo.authors.join(", ")}`
+                                ) : (
+                                    props.volumeInfo.title
+                                )
+                            }
+                        />
+                    </picture>
+                ) : null}
 
                 <Accordion
                     elevation={0}
@@ -92,8 +109,7 @@ function BookItem(props: Book) {
                                 props.volumeInfo.description
                             ) : (
                                 `No description available.`
-                            )
-                            }
+                            )}
                         </Typography>
                     </AccordionDetails>
                 </Accordion>

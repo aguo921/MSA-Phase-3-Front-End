@@ -37,6 +37,23 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
 }
 
 export default function Page({ data }: any) {
+    function choose_image(image_links: any) {
+        return (
+            image_links.extraLarge ? (
+                image_links.extraLarge
+            ) : image_links.large ? (
+                image_links.large
+            ) : image_links.medium ? (
+                image_links.medium
+            ) : image_links.small ? (
+                image_links.small
+            ) : image_links.thumbnail ? (
+                image_links.thumbnail
+            ) : image_links.smallThumbnail ? (
+                image_links.smallThumbnail
+            ) : undefined
+        )
+    }
     return (
         <Layout>
             {data && data.volumeInfo ? (
@@ -45,9 +62,11 @@ export default function Page({ data }: any) {
                         {data.volumeInfo.title}
                     </Typography>
 
-                    <Typography variant="h6">
-                        Author: {data.volumeInfo.authors.join(", ")}
-                    </Typography>
+                    {data.volumeInfo.authors ? (
+                        <Typography variant="h6">
+                            Author: {data.volumeInfo.authors.join(", ")}
+                        </Typography>
+                    ) : null}
                     
                     <Ratings
                         ratingsCount={data.volumeInfo.ratingsCount}
@@ -56,22 +75,20 @@ export default function Page({ data }: any) {
 
                     <Divider />
 
-                    {data.volumeInfo.imageLinks ? (
-                        data.volumeInfo.imageLinks.thumbnail ? (
-                            <picture>
-                                <img
-                                    src={data.volumeInfo.imageLinks.thumbnail.replace("http:", "")}
-                                    alt={
-                                        data.volumeInfo.authors ? (
-                                            `${data.volumeInfo.title} by ${data.volumeInfo.authors.join(", ")}`
-                                        ) : (
-                                            data.volumeInfo.title
-                                        )
-                                    }
-                                    className={styles.bookimage}
-                                />
-                            </picture>
-                        ) : null
+                    {data.volumeInfo.imageLinks && choose_image(data.volumeInfo.imageLinks) ? (
+                        <picture>
+                            <img
+                                src={choose_image(data.volumeInfo.imageLinks).replace("http:", "")}
+                                alt={
+                                    data.volumeInfo.authors ? (
+                                        `${data.volumeInfo.title} by ${data.volumeInfo.authors.join(", ")}`
+                                    ) : (
+                                        data.volumeInfo.title
+                                    )
+                                }
+                                className={styles.bookimage}
+                            />
+                        </picture>
                     ) : null}
 
                     <Typography sx={{ textAlign: "justify" }}>
