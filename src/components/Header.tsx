@@ -3,6 +3,7 @@ import {useState} from "react";
 
 // import next components
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 // import material UI components
 import Typography from "@mui/material/Typography";
@@ -21,7 +22,7 @@ import { SearchBy } from '../interfaces';
 // import styles
 import styles from './Header.module.css';
 
-import { useRouter } from 'next/router';
+// TODO: fix changing size of search bar
 
 export default function Header() {
   const [searchName, setSearchName] = useState<string>("");

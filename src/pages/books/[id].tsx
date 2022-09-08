@@ -1,16 +1,18 @@
 // import material UI components
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-
-import styles from './bookdetails.module.css';
-
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 
+//  import styles
+import styles from './../../book_item.module.css';
+
+// import components
 import Header from './../../components/Header';
 import Layout from './../../components/Layout';
 import Ratings from './../../components/Ratings';
 
+// import server side generation props
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {

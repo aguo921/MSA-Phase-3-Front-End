@@ -6,9 +6,6 @@ import Container from "@mui/material/Container";
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 
-// Agenda
-// TODO: Fix changing size of filter + search bar
-
 export default function Home() {
   return (
     <Layout>
