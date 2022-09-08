@@ -77,12 +77,6 @@ export type IndustryIdentifier = {
     identifier?: string
 }
 
-export type SearchResults = {
-    kind?: string,
-    items: Book[],
-    totalItems?: 3
-} | undefined
-
 export type SearchBy = "any" | "intitle" | "inauthor"
 
 export type FilterProps = {
@@ -102,10 +96,4 @@ export type SearchButtonProps = {
 export type RatingsProps = {
     ratingsCount: number | undefined,
     averageRating: number | undefined
-}
-
-export type HeaderProps = {
-    // setQuery: (a: string) => void,
-    // onSearch: (a: void) => void
-    setSearchInfo: (a: SearchResults) => void
 }

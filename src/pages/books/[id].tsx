@@ -5,18 +5,17 @@ import Divider from "@mui/material/Divider";
 import styles from './bookdetails.module.css';
 
 import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
 
-import Layout from './Layout';
-import Ratings from './Ratings';
+import Header from './../../components/Header';
+import Layout from './../../components/Layout';
+import Ratings from './../../components/Ratings';
 
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
-    const GOOGLE_BOOKS_BASE_URL = "https://www.googleapis.com/books/v1/volumes"
-    const API_KEY = "AIzaSyAKbgA01Ljc6tBu_YjrhTly0hLu0OtgQh8"
-
     if (context.params) {
-        const res = await fetch(`${GOOGLE_BOOKS_BASE_URL}/${context.params.id}?key=${API_KEY}`)
+        const res = await fetch(`${process.env.GOOGLE_BOOKS_BASE_URL}/volumes/${context.params.id}?key=${process.env.API_KEY}`)
         const data = await res.json()
         if (!data) {
             return {
@@ -56,6 +55,11 @@ export default function Page({ data }: any) {
     }
     return (
         <Layout>
+            <Header />
+            <Paper
+                elevation={2}
+                sx={{ p: 5 }}
+            >
             {data && data.volumeInfo ? (
                 <Container maxWidth="sm" sx={{py: 10}}>
                     <Typography variant="h5" sx={{ fontWeight: "bold" }}>
@@ -100,11 +104,9 @@ export default function Page({ data }: any) {
                             )
                         }
                     </Typography>
-                    <a href='../'>
-                        <Typography sx={{color: 'blue'}}>Back to home</Typography>
-                    </a>
                 </Container>
             ) : null }
+            </Paper>
         </Layout>
     )
 }

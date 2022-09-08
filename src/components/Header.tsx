@@ -1,6 +1,5 @@
 // import libraries
 import {useState} from "react";
-import axios from "axios";
 
 // import next components
 import Link from "next/link";
@@ -17,17 +16,18 @@ import SearchBar from "../components/SearchBar";
 import SearchButton from "../components/SearchButton";
 
 // import interfaces
-import { SearchBy, HeaderProps } from '../interfaces';
+import { SearchBy } from '../interfaces';
 
 // import styles
 import styles from './Header.module.css';
 
-export default function Header(props: HeaderProps) {
+import { useRouter } from 'next/router';
+
+export default function Header() {
   const [searchName, setSearchName] = useState<string>("");
   const [searchBy, setSearchBy] = useState<SearchBy>("any");
 
-  const GOOGLE_BOOKS_BASE_URL = "https://www.googleapis.com/books/v1"
-  const API_KEY = "AIzaSyAKbgA01Ljc6tBu_YjrhTly0hLu0OtgQh8"
+  const router = useRouter()
 
   return (
     <Box sx={{flexGrow: 1}}>
@@ -53,18 +53,11 @@ export default function Header(props: HeaderProps) {
             />
             <SearchButton
                 onClick={() => {
-                    let query = searchName.replace(" ", "+");
-                    query = searchBy === "any" ? query : searchBy + ":" + query
-                    axios
-                    .get(`${GOOGLE_BOOKS_BASE_URL}/volumes?q=${query}&${API_KEY}`)
-                    .then((res) => {
-                        console.log("Success!")
-                        props.setSearchInfo(res.data);
+                    router.push({
+                        pathname: '/search/[name]/[searchBy]',
+                        query: { name: searchName, searchBy: searchBy },
                     })
-                    .catch((err) => {
-                        console.log("Book not found");
-                        props.setSearchInfo(undefined);
-                    });
+                    console.log('Click!')
                 }}
             />
             </Toolbar>

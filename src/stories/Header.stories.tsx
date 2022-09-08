@@ -5,17 +5,12 @@ import { screen, userEvent } from '@storybook/testing-library';
 
 import Header from '../components/Header';
 
-import { HeaderProps } from '../interfaces';
-
 export default {
   title: 'Header',
   component: Header,
-  argTypes: {
-    setSearchInfo: { action: 'setSearchInfo' },
-  },
 } as ComponentMeta<typeof Header>;
 
-const Template: ComponentStory<typeof Header> = (args: HeaderProps) => <Header {...args} />;
+const Template: ComponentStory<typeof Header> = (args: any) => <Header {...args} />;
 
 export const Default = Template.bind({});
 
