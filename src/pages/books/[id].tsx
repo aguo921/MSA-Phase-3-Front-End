@@ -5,7 +5,7 @@ import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 
 //  import styles
-import styles from './../../book_item.module.css';
+import styles from './../../components/book_item.module.css';
 
 // import components
 import Header from './../../components/Header';
