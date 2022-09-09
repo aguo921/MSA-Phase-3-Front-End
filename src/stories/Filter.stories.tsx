@@ -21,7 +21,14 @@ export default {
         { name: 'white', value: '#ffffff' },
       ],
     }
-  }
+  },
+  decorators: [
+    (Story) => (
+      <div style={{width: '200px'}}>
+        <Story />
+      </div>
+    )
+  ]
 } as ComponentMeta<typeof Filter>;
 
 const Template: ComponentStory<typeof Filter> = (args: FilterProps) => <Filter {...args} />;
