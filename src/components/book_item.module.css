@@ -4,3 +4,12 @@
     display: block;
     margin: 25px auto;
   }
+
+.link {
+  color: inherit;
+  text-decoration: inherit; /* no underline */
+}
+
+.link:hover {
+  color: rgb(54, 137, 231);
+}

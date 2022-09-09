@@ -1,8 +1,8 @@
 .link {
-    color: inherit; /* blue colors for links too */
+    color: inherit;
     text-decoration: inherit; /* no underline */
   }
   
 .link:hover {
-    color: rgb(240, 240, 255);
+    color: rgb(217, 217, 217);
 }
