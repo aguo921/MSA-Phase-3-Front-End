@@ -16,7 +16,7 @@ export default {
             {name: 'default', value: 'rgb(240, 240, 255)'}
         ]
     },
-    chromatic: { viewports: [320, 1200] },
+    chromatic: { viewports: [320, 600, 1200] },
   }
 } as ComponentMeta<typeof BookList>;
 
