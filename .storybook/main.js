@@ -8,7 +8,8 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     '@storybook/addon-a11y',
-    "storybook-addon-pseudo-states"
+    "storybook-addon-pseudo-states",
+    "storybook-css-modules"
   ],
   "framework": "@storybook/react",
   "core": {
