@@ -11,7 +11,8 @@ export default {
   title: 'Search Bar',
   component: SearchBar,
   argTypes: {
-    setValue: { action: 'setValue' }
+    setValue: { action: 'setValue' },
+    onEnter: { action: 'onEnter'}
   },
   parameters: {
     backgrounds: {
