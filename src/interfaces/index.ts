@@ -87,6 +87,7 @@ export type FilterProps = {
 export type SearchBarProps = {
     value: string,
     setValue: (a: string) => void
+    onEnter: (a: void) => void
 }
 
 export type SearchButtonProps = {

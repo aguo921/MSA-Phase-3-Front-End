@@ -31,6 +31,13 @@ export default function Header() {
     const theme = useTheme();
     const small = useMediaQuery(theme.breakpoints.down('sm'))
 
+    function handleSearch() {
+        router.push({
+            pathname: '/search/[name]/[searchBy]',
+            query: { name: searchName, searchBy: searchBy }
+        })
+    }
+
     return (
         <Box
             sx={{
@@ -96,18 +103,14 @@ export default function Header() {
                         <SearchBar
                             value={searchName}
                             setValue={setSearchName}
+                            onEnter={handleSearch}
                         />
                     </Box>
                 </Box>
 
                 <Box>
                     <SearchButton
-                        onClick={() => {
-                            router.push({
-                                pathname: '/search/[name]/[searchBy]',
-                                query: { name: searchName, searchBy: searchBy },
-                            })
-                        }}
+                        onClick={handleSearch}
                     />
                 </Box>
             </Box>
