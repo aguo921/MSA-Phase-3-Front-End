@@ -8,8 +8,8 @@ import { useRouter } from 'next/router';
 // import material UI components
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 // import components
 import Filter from "../components/Filter";
@@ -22,47 +22,95 @@ import { SearchBy } from '../interfaces';
 // import styles
 import styles from './Header.module.css';
 
-// TODO: fix changing size of search bar
-
 export default function Header() {
-  const [searchName, setSearchName] = useState<string>("");
-  const [searchBy, setSearchBy] = useState<SearchBy>("any");
+    const [searchName, setSearchName] = useState<string>("");
+    const [searchBy, setSearchBy] = useState<SearchBy>("any");
 
-  const router = useRouter()
+    const router = useRouter();
 
-  return (
-    <Box sx={{flexGrow: 1}}>
-        <AppBar
-            position="static"
-            sx={{padding: 1}}
+    const theme = useTheme();
+    const small = useMediaQuery(theme.breakpoints.down('sm'))
+
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                p: 2,
+                bgcolor: '#1976d2',
+                flexWrap: small ? 'wrap' : 'nowrap'
+            }}
         >
-            <Toolbar>
-            <Typography
-                variant="h3"
-                component="div"
-                sx={{flexGrow: 1}}
-            >
-                <Link href='/' className={ styles.link }>Library</Link>
-            </Typography>
-            <Filter
-                searchBy={searchBy}
-                setSearchBy={setSearchBy}
-            />
-            <SearchBar
-                value={searchName}
-                setValue={setSearchName}
-            />
-            <SearchButton
-                onClick={() => {
-                    router.push({
-                        pathname: '/search/[name]/[searchBy]',
-                        query: { name: searchName, searchBy: searchBy },
-                    })
-                    console.log('Click!')
+            <Box
+                sx={{
+                    width: small ? '100%' : 'fit-content',
+                    p: 1
                 }}
-            />
-            </Toolbar>
-        </AppBar>
-    </Box>
-  )
+            >
+                <Typography
+                    variant="h4"
+                    component="div"
+                    sx={{
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }}
+                >
+                    <Link href='/' passHref>
+                        <a href="replace" className={styles.link}>Library</a>
+                    </Link>
+                </Typography>
+            </Box>
+
+            <Box
+                sx={{
+                    py: 1,
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    width: '100%'
+                }}
+            >
+                <Box
+                    sx={{
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'flex-end'
+                    }}
+                >
+                    <Box
+                        sx={{
+                            px: 1,
+                            width: small ? '25%' : '20%'
+                        }}
+                    >
+                        <Filter
+                            searchBy={searchBy}
+                            setSearchBy={setSearchBy}
+                        />
+                    </Box>
+
+                    <Box
+                        sx={{
+                            px: 1,
+                            width: small ? '75%' : '50%'
+                        }}
+                    >
+                        <SearchBar
+                            value={searchName}
+                            setValue={setSearchName}
+                        />
+                    </Box>
+                </Box>
+
+                <Box>
+                    <SearchButton
+                        onClick={() => {
+                            router.push({
+                                pathname: '/search/[name]/[searchBy]',
+                                query: { name: searchName, searchBy: searchBy },
+                            })
+                        }}
+                    />
+                </Box>
+            </Box>
+        </Box>
+    )
 }

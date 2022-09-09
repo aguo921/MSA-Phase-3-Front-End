@@ -13,10 +13,8 @@ function Filter(props: FilterProps) {
             variant="filled"
             size="small"
             sx={{
-                mr: 2,
-                minWidth: 0.15,
-                flexGrow: 0.5,
-                bgcolor: "white"
+                bgcolor: "white",
+                width: '100%',
             }}
         >
             <InputLabel id="filter-label">

@@ -18,10 +18,9 @@ function SearchBar(props: SearchBarProps) {
             placeholder="Search..."
             size="small"
             sx={{
-                mr: 2,
-                minWidth: 0.3,
-                flexGrow: 1,
                 bgcolor: "white",
+                width: '100%',
+                maxWidth: '600px'
             }}
         />
     )

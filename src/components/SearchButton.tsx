@@ -13,7 +13,6 @@ function SearchButton(props: SearchButtonProps) {
                 onClick={() => {
                     props.onClick();
                 }}
-                sx={{mr: 2}}
             >
                 <SearchIcon style={{fill: "white"}} />
             </IconButton>
