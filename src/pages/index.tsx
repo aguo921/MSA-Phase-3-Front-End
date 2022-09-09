@@ -19,7 +19,8 @@ export default function Home() {
     <Layout>
       <Header />
       <Container maxWidth="sm">
-        <Typography variant={small ? 'h3' : 'h1'} sx={{py: 20}}>Library</Typography>
+        <Typography variant={small ? 'h3' : 'h1'} sx={{mt: 20, mb: 2}}>Library</Typography>
+        <Typography>Explore the wonderful world of books...</Typography>
       </Container>
     </Layout>
   )
