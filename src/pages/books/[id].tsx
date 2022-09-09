@@ -15,6 +15,10 @@ import Ratings from './../../components/Ratings';
 // import server side generation props
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+import { useTheme } from '@mui/material/styles';
+
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
     if (context.params) {
         const res = await fetch(`${process.env.GOOGLE_BOOKS_BASE_URL}/volumes/${context.params.id}?key=${process.env.API_KEY}`)
@@ -55,12 +59,16 @@ export default function Page({ data }: any) {
             ) : undefined
         )
     }
+
+    const theme = useTheme();
+    const small = useMediaQuery(theme.breakpoints.down('sm'))
+
     return (
         <Layout>
             <Header />
             <Paper
                 elevation={2}
-                sx={{ p: 5 }}
+                sx={{ p: small ? 2 : 5 }}
             >
             {data && data.volumeInfo ? (
                 <Container maxWidth="sm" sx={{py: 10}}>
