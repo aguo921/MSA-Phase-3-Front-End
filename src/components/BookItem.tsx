@@ -6,6 +6,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from "@mui/material/Typography";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 // import components
 import Ratings from "./Ratings";
@@ -24,6 +26,7 @@ import React from 'react';
 // import interfaces
 import { Book } from '../interfaces';
 
+// import next components
 import Link from 'next/link';
 
 function BookItem(props: Book) {
@@ -45,17 +48,20 @@ function BookItem(props: Book) {
         )
     }
 
+    const theme = useTheme();
+    const small = useMediaQuery(theme.breakpoints.down('sm'))
+
     return (
         (props.volumeInfo && props.id && props.volumeInfo.title) ? (
             <Paper
                 key={props.id}
                 elevation={2}
-                sx={{ p: 5 }}
+                sx={{ p: small ? 2 : 5 }}
             >
                 
                 <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                    <Link href={`/books/${props.id}`}>
-                        {props.volumeInfo.title}
+                    <Link href={`/books/${props.id}`} passHref>
+                        <a href="replace" className={styles.link}>{props.volumeInfo.title}</a>
                     </Link>
                 </Typography>
 
