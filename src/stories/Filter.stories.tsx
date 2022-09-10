@@ -1,11 +1,13 @@
 import React from 'react';
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { screen, userEvent } from '@storybook/testing-library';
+import { screen, userEvent, waitFor } from '@storybook/testing-library';
 
 import Filter from '../components/Filter';
 
 import { FilterProps } from '../interfaces';
+
+import { expect } from '@storybook/jest';
 
 export default {
   title: 'Components/Header/Filter',
@@ -31,6 +33,10 @@ export default {
   ]
 } as ComponentMeta<typeof Filter>;
 
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 const Template: ComponentStory<typeof Filter> = (args: FilterProps) => <Filter {...args} />;
 
 export const Any = Template.bind({});
@@ -49,19 +55,37 @@ Title.args = {
 }
 
 export const SelectAny = Template.bind({});
-SelectAny.play = async () => {
-    await userEvent.click(screen.getByRole('button'));
+SelectAny.play = async ({args}) => {
+    await sleep(1000)
+    await userEvent.click(screen.getByLabelText('Search by...'));
+
+    await sleep(1000)
     await userEvent.click(screen.getByText(/Any/));
+
+    await waitFor(() => expect(args.setSearchBy).toHaveBeenCalledWith('any'))
+    await expect(screen.getByRole('button')).toHaveTextContent('Any')
 };
 
 export const SelectAuthor = Template.bind({});
-SelectAuthor.play = async () => {
-    await userEvent.click(screen.getByRole('button'));
+SelectAuthor.play = async ({args}) => {
+  await sleep(1000)
+    await userEvent.click(screen.getByLabelText('Search by...'));
+
+    await sleep(1000)
     await userEvent.click(screen.getByText(/Author/));
+
+    await waitFor(() => expect(args.setSearchBy).toHaveBeenCalledWith('inauthor'))
+    await expect(screen.getByRole('button')).toHaveTextContent('Author')
 };
 
 export const SelectTitle = Template.bind({});
-SelectTitle.play = async () => {
-    await userEvent.click(screen.getByRole('button'));
+SelectTitle.play = async ({args}) => {
+  await sleep(1000)
+    await userEvent.click(screen.getByLabelText('Search by...'));
+
+    await sleep(1000)
     await userEvent.click(screen.getByText(/Title/));
+
+    await waitFor(() => expect(args.setSearchBy).toHaveBeenCalledWith('intitle'))
+    await expect(screen.getByRole('button')).toHaveTextContent('Title')
 };

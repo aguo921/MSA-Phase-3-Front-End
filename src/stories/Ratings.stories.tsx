@@ -34,7 +34,6 @@ HoverRating.args = {
 
 HoverRating.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-
   await waitFor(async () => {
     await userEvent.hover(canvas.getByTitle('14 ratings'))
   })

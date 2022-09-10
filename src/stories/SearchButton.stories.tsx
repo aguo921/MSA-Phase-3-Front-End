@@ -1,11 +1,13 @@
 import React from 'react';
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { screen, userEvent } from '@storybook/testing-library';
+import { screen, userEvent, waitFor } from '@storybook/testing-library';
 
 import SearchButton from '../components/SearchButton';
 
 import { SearchButtonProps } from '../interfaces';
+
+import { expect } from '@storybook/jest';
 
 export default {
   title: 'Components/Header/SearchButton',
@@ -26,16 +28,23 @@ export default {
 
 const Template: ComponentStory<typeof SearchButton> = (args: SearchButtonProps) => <SearchButton {...args} />;
 
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export const Default = Template.bind({});
 
 export const Click = Template.bind({});
 
-Click.play = async () => {
-    await userEvent.click(screen.getByRole('button'));
+Click.play = async ({args}) => {
+  await sleep(1000)
+    await userEvent.click(screen.getByLabelText('search'));
+    await waitFor(() => expect(args.onClick).toHaveBeenCalled());
 };
 
 export const Focus = Template.bind({});
 
 Focus.play = async () => {
-    await screen.getByRole('button').focus();
+  await sleep(1000)
+    await screen.getByLabelText('search').focus();
 };
