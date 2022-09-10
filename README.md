@@ -11,7 +11,7 @@ Open the [Credentials page](https://console.developers.google.com/apis/credentia
 Create a `.env.local` file in the project directory and add your API key.
 
 ```
-# .env
+# .env.local
 API_KEY=yourapikey
 ```
 
@@ -47,7 +47,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Runs the storybook.
 
-The storybook should automatically load in the browser at [http://localhost:6006/].
+The storybook should automatically load in the browser at [http://localhost:6006/](http://localhost:6006/).
 
 ### `npm run test-storybook`
 
@@ -59,7 +59,7 @@ Check for lint errors.
 
 ### `npm run chromatic`
 
-Runs snapshot tests on the storybook stories.
+Runs snapshot tests on the storybook.
 
 # Advanced Features
 - [x] UI Scalability with window size
@@ -72,7 +72,7 @@ Runs snapshot tests on the storybook stories.
 - [ ] Clear usage of Websockets
 - [x] At least one fluid animation
 - [ ] Redux state management
-- [ ] Demonstration of complex FE logic
+- [x] Demonstration of complex FE logic
 
 # Expert Features
 - [ ] A YAML CI/CD pipeline which builds and deploys a containerised application to either Azure or AWS, which is configured to use environment variables correctly.
@@ -81,4 +81,4 @@ Runs snapshot tests on the storybook stories.
 
 # Deployment on Vercel
 
-See the deployed site on Vercel at [https://frontend-submission-aguo921.vercel.app/](https://frontend-submission-aguo921.vercel.app/).
+Visit the [deployments](https://github.com/aguo921/front-end-submission/deployments) hosted on Vercel.
