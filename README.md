@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Run `npm install` to install the required dependencies.
 
-## Acquire and use an API key
+## Acquiring API key
 
 Open the [Credentials page](https://console.developers.google.com/apis/credentials) in the API Console and create an API key in the Console by clicking Create credentials  > API key.
 
@@ -60,6 +60,24 @@ Check for lint errors.
 ### `npm run chromatic`
 
 Runs snapshot tests on the storybook stories.
+
+# Advanced Features
+- [x] UI Scalability with window size
+- [x] Mobile first development (using media query breakpoints, etc)
+- [x] Storybook w/ both actions and interactions (play)
+- [ ] Progressive Web App (PWA) functionality w/ clear use of the service worker
+- [x] API connection to your own API that is cloud hosted
+- [x] Comprehensive unit testing
+- [ ] OAuth2 with PKCE login w/ at least ONE third party provider
+- [ ] Clear usage of Websockets
+- [x] At least one fluid animation
+- [ ] Redux state management
+- [ ] Demonstration of complex FE logic
+
+# Expert Features
+- [ ] A YAML CI/CD pipeline which builds and deploys a containerised application to either Azure or AWS, which is configured to use environment variables correctly.
+- [x] Usage of SSR / SSG with at least three of the advanced features
+- [ ] Usage of Terraform to structure and provision a cloud environment, which is incorporated into a CI/CD pipeline
 
 # Deployment on Vercel
 
