@@ -8,7 +8,7 @@ import { screen, userEvent } from '@storybook/testing-library';
 import { Book } from '../interfaces';
 
 export default {
-  title: 'BookItem',
+  title: 'Components/BookList/BookItem',
   component: BookItem,
   argTypes: {
     handleChange: { action: 'expanded' }

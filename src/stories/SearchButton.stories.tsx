@@ -8,7 +8,7 @@ import SearchButton from '../components/SearchButton';
 import { SearchButtonProps } from '../interfaces';
 
 export default {
-  title: 'Search Button',
+  title: 'Components/Header/SearchButton',
   component: SearchButton,
   argTypes: {
     onClick: { action: 'click' }

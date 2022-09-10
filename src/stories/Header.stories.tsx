@@ -6,7 +6,7 @@ import { screen, userEvent, waitFor } from '@storybook/testing-library';
 import Header from '../components/Header';
 
 export default {
-  title: 'Header',
+  title: 'Components/Header',
   component: Header,
   parameters: {
     chromatic: { viewports: [320, 600, 1200] }

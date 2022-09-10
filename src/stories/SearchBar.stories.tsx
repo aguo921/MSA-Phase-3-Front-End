@@ -8,7 +8,7 @@ import SearchBar from '../components/SearchBar';
 import { SearchBarProps } from '../interfaces';
 
 export default {
-  title: 'Search Bar',
+  title: 'Components/Header/SearchBar',
   component: SearchBar,
   argTypes: {
     setValue: { action: 'setValue' },

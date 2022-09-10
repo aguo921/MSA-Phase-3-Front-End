@@ -7,7 +7,7 @@ import { BookOne, BookTwo, BookThree } from './BookItem.stories';
 import { BookListProps } from '../interfaces';
 
 export default {
-  title: 'BookList',
+  title: 'Components/BookList',
   component: BookList,
   parameters: {
     backgrounds: {

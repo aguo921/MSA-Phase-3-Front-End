@@ -8,7 +8,7 @@ import Filter from '../components/Filter';
 import { FilterProps } from '../interfaces';
 
 export default {
-  title: 'Filter',
+  title: 'Components/Header/Filter',
   component: Filter,
   argTypes: {
     setSearchBy: { action: 'setSearchBy' }

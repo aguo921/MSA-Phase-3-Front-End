@@ -8,7 +8,7 @@ import { userEvent, waitFor, within } from '@storybook/testing-library';
 import { RatingsProps } from '../interfaces';
 
 export default {
-  title: 'Ratings',
+  title: 'Components/BookList/BookItem/Ratings',
   component: Ratings,
 } as ComponentMeta<typeof Ratings>;
 
