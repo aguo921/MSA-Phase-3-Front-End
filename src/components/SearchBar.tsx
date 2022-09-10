@@ -25,7 +25,7 @@ function SearchBar(props: SearchBarProps) {
                 props.setValue(e.target.value);
             }}
             onKeyPress={(e: KeyboardEvent<HTMLInputElement>) => {
-                if (e.key == 'Enter'){
+                if (e.key === 'Enter'){
                     props.onEnter()
                 }
             }}

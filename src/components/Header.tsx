@@ -32,10 +32,15 @@ export default function Header() {
     const small = useMediaQuery(theme.breakpoints.down('sm'))
 
     function handleSearch() {
-        router.push({
-            pathname: '/search/[name]/[searchBy]',
-            query: { name: searchName, searchBy: searchBy }
-        })
+        try {
+            router.push({
+                pathname: '/search/[name]/[searchBy]',
+                query: { name: searchName, searchBy: searchBy }
+            })
+        } catch(error) {
+            alert(error);
+        }
+
     }
 
     return (
